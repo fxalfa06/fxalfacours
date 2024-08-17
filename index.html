@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Basique</title>
+</head>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FX'ALFA COURS - Formation en Trading</title>
+<style>
+:root {
+  --primary-blue: #0055A4;
+  --white: #FFFFFF;
+  --red: #EF4135;
+  --dark-blue: #00337F;
+  --light-blue: #3D9FF9;
+  --light-gray: #f4f4f4;
+  --dark-gray: #333;
+}
+
+body, html {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1550645612-83f5d594b671?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 55, 164, 0.7); /* Bleu semi-transparent */
+  z-index: 1;
+}
+
+.content {
+  text-align: center;
+  z-index: 2;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.auth-button {
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-button {
+  background-color: transparent;
+  border: 2px solid var(--white);
+  color: var(--white);
+}
+
+.login-button:hover {
+  background-color: var(--white);
+  color: var(--primary-blue);
+}
+
+.signup-button {
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+}
+
+.signup-button:hover {
+  background-color: #d32f2f;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+  }
+  
+  .auth-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>FX'ALFA COURS</h1>
+      <p>Votre partenaire pour devenir un trader professionnel</p>
+      <div class="auth-buttons">
+        <a href="#login" class="auth-button login-button">Se connecter</a>
+        <a href="inscription.html" class="auth-button signup-button">S'inscrire</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Smooth hover effect for buttons
+    document.querySelectorAll('.auth-button').forEach(button => {
+      button.addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+      });
+      button.addEventListener('mouseout', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = 'none';
+      });
+    });
+
+    // Subtle parallax effect for background
+    document.querySelector('.container').addEventListener('mousemove', (e) => {
+      const container = e.currentTarget;
+      const walk = 20; // px to move (reduced for subtlety)
+      const { width, height } = container.getBoundingClientRect();
+      let { clientX, clientY } = e;
+      const xWalk = (clientX / width * walk) - (walk / 2);
+      const yWalk = (clientY / height * walk) - (walk / 2);
+      
+      container.style.backgroundPosition = `calc(50% + ${xWalk}px) calc(50% + ${yWalk}px)`;
+    });
+  </script>
+</body></html>

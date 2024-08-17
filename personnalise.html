@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Basique</title>
+</head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FX'ALFA COURS - Cours Personnalisés</title>
+<style>
+:root {
+  --primary-blue: #0055A4;
+  --white: #FFFFFF;
+  --red: #EF4135;
+  --dark-blue: #00337F;
+  --light-blue: #3D9FF9;
+  --light-gray: #f4f4f4;
+  --dark-gray: #333;
+  --gold: #FFD700;
+  --green: #4CAF50;
+}
+
+body, html {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--light-gray);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+}
+
+.video-container {
+  flex: 3;
+  padding: 1.5rem;
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin: 1rem;
+  border-radius: 8px;
+}
+
+.video-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+  border-bottom: 2px solid var(--light-blue);
+  padding-bottom: 0.5rem;
+}
+
+.video-player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.playlist {
+  flex: 1;
+  background-color: var(--white);
+  padding: 1rem;
+  overflow-y: auto;
+  margin: 1rem 1rem 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.playlist-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+  text-align: center;
+  border-bottom: 2px solid var(--light-blue);
+  padding-bottom: 0.5rem;
+}
+
+.playlist-item {
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  background-color: var(--light-gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.playlist-item:hover {
+  background-color: var(--light-blue);
+  color: var(--white);
+  transform: translateX(5px);
+}
+
+.rating-comment {
+  background-color: var(--light-gray);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.star {
+  color: #ccc;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.star.active {
+  color: var(--gold);
+}
+
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+button {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: var(--dark-blue);
+}
+
+.video-call {
+  background-color: var(--white);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.video-call-button {
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 50px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-call-button:hover {
+  background-color: #45a049;
+}
+
+.video-call-button svg {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+  
+  .playlist {
+    order: -1;
+    margin: 1rem;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FX'ALFA COURS - Cours Personnalisés</h1>
+    </header>
+    <main>
+      <div class="video-container">
+        <h2 class="video-title">Stratégie de Trading Personnalisée</h2>
+        <div class="video-player">
+          <!-- Placeholder for video player -->
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100%" height="100%" fill="#000"/>
+            <text x="50%" y="50%" font-family="Roboto" font-size="20" fill="white" text-anchor="middle" dy=".3em">Vidéo du cours personnalisé ici</text>
+          </svg>
+        </div>
+        <div class="rating-comment">
+          <div class="rating">
+            <span>Évaluez cette vidéo : </span>
+            <span class="star" data-rating="1">☆</span>
+            <span class="star" data-rating="2">☆</span>
+            <span class="star" data-rating="3">☆</span>
+            <span class="star" data-rating="4">☆</span>
+            <span class="star" data-rating="5">☆</span>
+          </div>
+          <textarea placeholder="Partagez vos réflexions ou posez une question spécifique..."></textarea>
+          <button>Soumettre</button>
+        </div>
+        <div class="video-call">
+          <button class="video-call-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="23 7 16 12 23 17 23 7"></polygon>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+            Démarrer un appel vidéo
+          </button>
+        </div>
+      </div>
+      <div class="playlist">
+        <h3 class="playlist-title">Programme Personnalisé</h3>
+        <div class="playlist-item">Analyse de votre style de trading</div>
+        <div class="playlist-item">Stratégies adaptées à votre profil</div>
+        <div class="playlist-item">Gestion du risque personnalisée</div>
+        <div class="playlist-item">Optimisation de votre plan de trading</div>
+        <div class="playlist-item">Psychologie du trading pour votre cas</div>
+        <div class="playlist-item">Simulation de marché sur mesure</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        const rating = this.getAttribute('data-rating');
+        stars.forEach(s => {
+          s.classList.remove('active');
+          if (s.getAttribute('data-rating') <= rating) {
+            s.classList.add('active');
+            s.textContent = '★';
+          } else {
+            s.textContent = '☆';
+          }
+        });
+      });
+    });
+
+    // Playlist item click simulation
+    const playlistItems = document.querySelectorAll('.playlist-item');
+    playlistItems.forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelector('.video-title').textContent = this.textContent;
+        // Here you would typically load the new video
+        alert(`Chargement du cours personnalisé : ${this.textContent}`);
+      });
+    });
+
+    // Comment submission simulation
+    const commentButton = document.querySelector('.rating-comment button');
+    commentButton.addEventListener('click', function() {
+      const commentText = document.querySelector('textarea').value;
+      if (commentText.trim() !== '') {
+        alert('Commentaire soumis avec succès : ' + commentText);
+        document.querySelector('textarea').value = '';
+      } else {
+        alert('Veuillez entrer un commentaire avant de soumettre.');
+      }
+    });
+
+    // Video call button simulation
+    const videoCallButton = document.querySelector('.video-call-button');
+    videoCallButton.addEventListener('click', function() {
+      alert('Initialisation de l\'appel vidéo avec votre instructeur personnel...');
+      // Here you would typically initiate the video call functionality
+    });
+  </script>
+</body></html>
+

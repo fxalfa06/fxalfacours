@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Basique</title>
+</head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FX'ALFA COURS - Interface Admin</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+  }
+  header {
+    background: #0055A4;
+    color: white;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+  }
+  header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  header h1 {
+    margin: 0;
+    text-align: center;
+  }
+  nav {
+    background: #333;
+    color: #ffffff;
+    padding: 10px 0;
+  }
+  nav ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+  nav li {
+    display: inline;
+    margin: 0 10px;
+  }
+  nav a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .main {
+    padding: 20px;
+    background: #ffffff;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  h2 {
+    color: #0055A4;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  th {
+    background-color: #0055A4;
+    color: white;
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #0055A4;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .btn-danger {
+    background: #e8491d;
+  }
+  form {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  input[type="text"], input[type="url"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  input[type="submit"] {
+    background: #0055A4;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>FX'ALFA COURS - Interface Admin</h1>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#videos">Gérer les Vidéos</a></li>
+      <li><a href="#users">Gérer les Utilisateurs</a></li>
+      <li><a href="#courses">Gérer les Cours</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <section id="videos" class="main">
+      <h2>Gestion des Vidéos</h2>
+      <a href="#add-video" class="btn">Ajouter une Vidéo</a>
+      <table>
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th>Cours</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Introduction au Forex</td>
+            <td>Basique</td>
+            <td>
+              <a href="#edit-video" class="btn">Modifier</a>
+              <a href="#delete-video" class="btn btn-danger">Supprimer</a>
+            </td>
+          </tr>
+          <!-- Ajoutez plus de lignes ici pour d'autres vidéos -->
+        </tbody>
+      </table>
+    </section>
+
+    <section id="add-video" class="main">
+        <h2>Ajouter une Vidéo</h2>
+        <form action="upload.php" method="post" enctype="multipart/form-data"> <input type="text" name="title" placeholder="Titre de la vidéo" required>
+          <input type="file" name="video_file" required>
+          <select name="course" required>
+            <option value="">Sélectionnez un cours</option>
+            <option value="basique">Basique</option>
+            <option value="avance">Avancé</option>
+            <option value="personnalise">Personnalisé</option>
+          </select>
+          <textarea name="description" placeholder="Description de la vidéo"></textarea>
+          <input type="submit" value="Ajouter la Vidéo">
+        </form>
+      </section>
+
+    <section id="users" class="main">
+      <h2>Gestion des Utilisateurs</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom d'utilisateur</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>JohnDoe</td>
+            <td>john@example.com</td>
+            <td>
+              <a href="#edit-user" class="btn">Modifier</a>
+              <a href="#delete-user" class="btn btn-danger">Supprimer</a>
+            </td>
+          </tr>
+          <!-- Ajoutez plus de lignes ici pour d'autres utilisateurs -->
+        </tbody>
+      </table>
+    </section>
+
+    <section id="courses" class="main">
+      <h2>Gestion des Cours</h2>
+      <a href="#add-course" class="btn">Ajouter un Cours</a>
+      <table>
+        <thead>
+          <tr>
+            <th>Titre du Cours</th>
+            <th>Niveau</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Initiation au Forex</td>
+            <td>Basique</td>
+            <td>
+              <a href="#edit-course" class="btn">Modifier</a>
+              <a href="#delete-course" class="btn btn-danger">Supprimer</a>
+            </td>
+          </tr>
+          <!-- Ajoutez plus de lignes ici pour d'autres cours -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script>
+    // Ici, vous pouvez ajouter du JavaScript pour gérer les interactions dynamiques
+    // Par exemple, pour confirmer les suppressions, gérer les formulaires en AJAX, etc.
+    document.querySelectorAll('.btn-danger').forEach(button => {
+      button.addEventListener('click', function(e) {
+        if(!confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</body></html>

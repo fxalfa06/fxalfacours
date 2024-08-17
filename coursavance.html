@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Basique</title>
+</head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FX'ALFA COURS - Cours Avancé</title>
+<style>
+:root {
+  --primary-blue: #0055A4;
+  --white: #FFFFFF;
+  --red: #EF4135;
+  --dark-blue: #00337F;
+  --light-blue: #3D9FF9;
+  --light-gray: #f4f4f4;
+  --dark-gray: #333;
+  --green: #4CAF50;
+  --gold: #FFD700;
+}
+
+body, html {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--light-gray);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+}
+
+.video-container {
+  flex: 3;
+  padding: 1rem;
+}
+
+.video-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+}
+
+.video-player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: var(--light-gray);
+  margin-top: 10px;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background-color: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.playlist {
+  flex: 1;
+  background-color: var(--white);
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.playlist-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+}
+
+.playlist-item {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--light-gray);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.playlist-item:hover {
+  background-color: var(--light-blue);
+  color: var(--white);
+}
+
+.playlist-item.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.playlist-item::before {
+  content: "🔓";
+  margin-right: 10px;
+}
+
+.playlist-item.locked::before {
+  content: "🔒";
+}
+
+.playlist-item.completed::before {
+  content: "✅";
+}
+
+.rating-comment {
+  background-color: var(--white);
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.star {
+  color: #ccc;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.star.active {
+  color: var(--gold);
+}
+
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--dark-blue);
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+  
+  .playlist {
+    order: -1;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FX'ALFA COURS - Cours Avancé</h1>
+    </header>
+    <main>
+      <div class="video-container">
+        <h2 class="video-title">Stratégies de trading avancées</h2>
+        <div class="video-player">
+          <!-- Placeholder for video player -->
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100%" height="100%" fill="#000"/>
+            <text x="50%" y="50%" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dy=".3em">Vidéo du cours avancé ici</text>
+          </svg>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" id="video-progress"></div>
+        </div>
+        <div class="rating-comment">
+          <div class="rating">
+            <span>Noter cette vidéo : </span>
+            <span class="star" data-rating="1">☆</span>
+            <span class="star" data-rating="2">☆</span>
+            <span class="star" data-rating="3">☆</span>
+            <span class="star" data-rating="4">☆</span>
+            <span class="star" data-rating="5">☆</span>
+          </div>
+          <textarea placeholder="Laissez un commentaire ou posez une question..."></textarea>
+          <button>Envoyer</button>
+        </div>
+      </div>
+      <div class="playlist">
+        <h3 class="playlist-title">Progression du cours avancé</h3>
+        <div class="playlist-item completed" data-video="1">Stratégies de trading avancées</div>
+        <div class="playlist-item" data-video="2">Analyse technique approfondie</div>
+        <div class="playlist-item locked" data-video="3">Trading algorithmique</div>
+        <div class="playlist-item locked" data-video="4">Gestion avancée du risque</div>
+        <div class="playlist-item locked" data-video="5">Psychologie avancée du trading</div>
+        <div class="playlist-item locked" data-video="6">Analyse des données de marché</div>
+        <div class="playlist-item locked" data-video="7">Trading haute fréquence</div>
+        <div class="playlist-item locked" data-video="8">Stratégies multi-actifs</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let currentVideo = 1;
+    const totalVideos = 8;
+    
+    function updateProgress() {
+      const progress = (currentVideo - 1) / totalVideos * 100;
+      document.getElementById('video-progress').style.width = `${progress}%`;
+    }
+
+    function unlockNextVideo() {
+      if (currentVideo < totalVideos) {
+        currentVideo++;
+        updatePlaylist();
+        updateProgress();
+      }
+    }
+
+    function updatePlaylist() {
+      const items = document.querySelectorAll('.playlist-item');
+      items.forEach((item, index) => {
+        if (index < currentVideo) {
+          item.classList.remove('locked');
+          item.classList.add('completed');
+        } else if (index === currentVideo) {
+          item.classList.remove('locked');
+        }
+      });
+    }
+
+    // Simulate video completion (for demonstration purposes)
+    let videoInterval = setInterval(() => {
+      if (Math.random() > 0.8) {
+        unlockNextVideo();
+        if (currentVideo > totalVideos) {
+          clearInterval(videoInterval);
+        }
+      }
+    }, 4000);
+
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        const rating = this.getAttribute('data-rating');
+        stars.forEach(s => {
+          s.classList.remove('active');
+          if (s.getAttribute('data-rating') <= rating) {
+            s.classList.add('active');
+            s.textContent = '★';
+          } else {
+            s.textContent = '☆';
+          }
+        });
+      });
+    });
+
+    // Playlist item click simulation
+    const playlistItems = document.querySelectorAll('.playlist-item');
+    playlistItems.forEach(item => {
+      item.addEventListener('click', function() {
+        if (!this.classList.contains('locked')) {
+          const videoNumber = parseInt(this.getAttribute('data-video'));
+          if (videoNumber <= currentVideo) {
+            document.querySelector('.video-title').textContent = this.textContent;
+            alert(`Chargement de la vidéo avancée : ${this.textContent}`);
+          }
+        } else {
+          alert("Vous devez terminer les vidéos précédentes avant de pouvoir accéder à celle-ci.");
+        }
+      });
+    });
+
+    // Comment submission simulation
+    const commentButton = document.querySelector('button');
+    commentButton.addEventListener('click', function() {
+      const commentText = document.querySelector('textarea').value;
+      if (commentText.trim() !== '') {
+        alert('Commentaire envoyé : ' + commentText);
+        document.querySelector('textarea').value = '';
+      } else {
+        alert('Veuillez entrer un commentaire avant d\'envoyer.');
+      }
+    });
+
+    // Initial update
+    updateProgress();
+    updatePlaylist();
+  </script>
+</body></html>
